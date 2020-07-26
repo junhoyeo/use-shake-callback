@@ -1,5 +1,5 @@
 # use-shake-callback
-> 🐍 useShakeCallback hook for listening shaking events in React Native
+> 🐍 useShakeCallback hook for listening shake events in React Native
 
 [![npm version](https://img.shields.io/npm/v/use-shake-callback.svg?style=flat-square)](https://www.npmjs.org/package/use-shake-callback)
 [![weekly downloads](https://img.shields.io/npm/dw/use-shake-callback.svg?style=flat-square)](https://www.npmjs.org/package/use-shake-callback)

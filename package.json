@@ -1,7 +1,7 @@
 {
   "name": "use-shake-callback",
   "version": "1.1.0",
-  "description": "useShakeCallback hook for listening shaking events in React Native",
+  "description": "useShakeCallback hook for listening shake events in React Native",
   "repository": "https://github.com/junhoyeo/use-shake-callback",
   "author": "Junho Yeo <hanaro0704@gmail.com>",
   "license": "MIT",
