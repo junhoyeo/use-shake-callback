@@ -5,7 +5,7 @@
 import useShakeCallback from 'use-shake-callback';
 
 useShakeCallback({
-  updateAt: 100,
+  updateInterval: 100,
   threshold: 800,
 }, () => {
   console.log('🐍 Shook Shook');
