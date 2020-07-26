@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   accelerometer,
   setUpdateIntervalForType,
   SensorTypes,
+  SensorData,
 } from 'react-native-sensors';
 import { map, filter } from 'rxjs/operators';
 
@@ -12,17 +13,34 @@ interface ShakeConfig {
   onError?: (error: any) => void;
 }
 
-export default function useShakeCallback({
-  updateInterval = 100,
-  threshold = 800,
-  onError,
-}: ShakeConfig, callback: (speed: number) => void): void {
-  return useEffect(() => {
-    setUpdateIntervalForType(SensorTypes.accelerometer, updateInterval);
-    const subscription = accelerometer
-      .pipe(map(({ x, y, z }) => x + y + z), filter(speed => speed > threshold))
-      .subscribe(callback, onError);
+type ShakeCallback = (speed: number) => void;
 
-    return subscription.unsubscribe;
-  });
+export default function useShakeCallback(
+  { updateInterval = 100, threshold = 5, onError }: ShakeConfig,
+  callback: ShakeCallback,
+): void {
+  const [lastAcceleration, setLastAcceleration] = useState<number>(0);
+  const [lastUpdated, setLastUpdated] = useState<number>(0);
+
+  const getSpeed = ({ x, y, z, timestamp: currentTime }: SensorData) => {
+    const gapTime = (currentTime as unknown as number) - lastUpdated;
+    const currentSpeed = Math.abs(x + y + z - lastAcceleration) / gapTime;
+    setLastAcceleration(x + y + z);
+    setLastUpdated(currentTime as unknown as number);
+    return currentSpeed * 10000;
+  };
+
+  return useEffect(
+    () => {
+      setUpdateIntervalForType(SensorTypes.accelerometer, updateInterval);
+      const subscription = accelerometer
+        .pipe(
+          map((sensorData) => getSpeed(sensorData)),
+          filter((speed) => speed > threshold))
+        .subscribe(callback, onError);
+
+      return () => subscription.unsubscribe();
+    },
+    [],
+  );
 }
