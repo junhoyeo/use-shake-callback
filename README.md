@@ -63,4 +63,4 @@ useShakeCallback(() => {
 | ---------- | -------- | ------------- | ----------- |
 | `updateInterval` | `number` | `100` | Defines the update interval of the accelerometer sensor |
 | `threshold` | `number` | `5` | Threshold for detecting shake events; If the current speed is greater than the provided value, the callback will be called. |
-| `onError` | `(error: any) => void | undefined` | `undefined` | Called when error occurred in subscription for accelerometer |
+| `onError` | `(error: any) => void` or `undefined` | `undefined` | Called when error occurred in subscription for accelerometer |
