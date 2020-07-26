@@ -7,17 +7,17 @@ import {
 } from 'react-native-sensors';
 import { map, filter } from 'rxjs/operators';
 
-interface ShakeConfig {
+export interface ShakeConfig {
   updateInterval?: number;
   threshold?: number;
   onError?: (error: any) => void;
 }
 
-type ShakeCallback = (speed: number) => void;
+export type ShakeCallback = (speed: number) => void;
 
 export default function useShakeCallback(
-  { updateInterval = 100, threshold = 5, onError }: ShakeConfig,
   callback: ShakeCallback,
+  { updateInterval = 100, threshold = 5, onError }: ShakeConfig = {},
 ): void {
   const [lastAcceleration, setLastAcceleration] = useState<number>(0);
   const [lastUpdated, setLastUpdated] = useState<number>(0);
