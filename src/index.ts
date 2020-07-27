@@ -1,1 +1,5 @@
-export { default } from './useShakeCallback';
+export {
+  default,
+  ShakeCallback,
+  ShakeConfig,
+} from './useShakeCallback';

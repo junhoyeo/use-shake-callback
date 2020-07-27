@@ -41,6 +41,10 @@ useShakeCallback(() => {
 
 - All typings are exported. Yay! 🎉
 
+```ts
+import { ShakeCallback, ShakeConfig } from 'use-shake-callback';
+```
+
 ### type ShakeCallback
 
 - Type of the callback, which is called when the current device speed(calculated from acceleration) is greater then the provided `threshold`.
