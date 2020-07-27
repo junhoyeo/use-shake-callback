@@ -23,10 +23,10 @@ export default function useShakeCallback(
   const [lastUpdated, setLastUpdated] = useState<number>(0);
 
   const getSpeed = ({ x, y, z, timestamp: currentTime }: SensorData) => {
-    const gapTime = (currentTime as unknown as number) - lastUpdated;
+    const gapTime = currentTime - lastUpdated;
     const currentSpeed = Math.abs(x + y + z - lastAcceleration) / gapTime;
     setLastAcceleration(x + y + z);
-    setLastUpdated(currentTime as unknown as number);
+    setLastUpdated(currentTime);
     return currentSpeed * 10000;
   };
 

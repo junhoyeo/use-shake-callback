@@ -59,10 +59,10 @@ mixly@^1.0.0:
   dependencies:
     fulcon "^1.0.1"
 
-react-native-sensors@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-sensors/-/react-native-sensors-6.0.2.tgz#0f307d2b627c73f395406dfc491d0736ad039f5e"
-  integrity sha512-5u6kEUNbgRgvVtO27nEqoCFntHXuiO+/dPt1RvR0bk0mbp56hqCpXgKhuNAj68O/SCAsTwxVM4QuEGBm5696ZQ==
+react-native-sensors@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-sensors/-/react-native-sensors-6.0.3.tgz#751895caafa0b7f1daf96a9f9572dd7f228023cc"
+  integrity sha512-A4UG7awPhhYyZ04Eg7sEHMLKd1uP1NnUa+qIiNoI6HgSrce+yUSNwZjmvPjfQiC7yo930gIpE0+MBnadM3j5Dg==
   dependencies:
     rxjs ">= 6"
 
