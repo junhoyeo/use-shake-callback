@@ -37,6 +37,21 @@ useShakeCallback(() => {
 });
 ```
 
+- This hooks is **optimized to unsubscribe the sensor event listener** when the app status change to `inactive`(= when the app goes to background). The `appState`, which is required to handle such process, is exported so that you can use throughout your application.
+
+```ts
+const { appState } = useShakeCallback(
+  () => console.log('🐍 Shook Shook');
+  {
+    onError: (error) => console.log(error),
+    onUnsubscribe: () =>
+      console.log('[*] Unsubscribing accelerometer sensor'),
+  },
+);
+
+console.log(appState) // 'active' or 'inactive'
+```
+
 ## 👻 Typings
 
 - All typings are exported. Yay! 🎉
@@ -69,3 +84,4 @@ import { ShakeCallback, ShakeConfig } from 'use-shake-callback';
 | `updateInterval` | `number` | `100` | Defines the update interval of the accelerometer sensor |
 | `threshold` | `number` | `5` | Threshold for detecting shake events; If the current speed is greater than the provided value, the callback will be called. |
 | `onError` | `(error: any) => void` or `undefined` | `undefined` | Called when error occurred in subscription for accelerometer |
+| `onUnsubscribe` | `() => void` or `undefined` | `undefined` | Called when unsubscribed from the accelerometer sensor |
